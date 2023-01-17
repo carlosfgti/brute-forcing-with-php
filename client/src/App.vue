@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SimpleFormLogin from './components/SimpleFormLogin.vue'
+import SimpleFormLogin from './views/SimpleFormLogin.vue'
 </script>
 
 <template>
