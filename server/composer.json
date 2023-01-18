@@ -11,5 +11,7 @@
             "email": "carlos@especializati.com.br"
         }
     ],
-    "require": {}
+    "require": {
+        "guzzlehttp/guzzle": "^7.5"
+    }
 }
