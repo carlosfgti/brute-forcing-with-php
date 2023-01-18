@@ -11,7 +11,7 @@ import SimpleFormLogin from './views/SimpleFormLogin.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <SimpleFormLogin/>
+  <router-view></router-view>
 </template>
 
 <style scoped>
