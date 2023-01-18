@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import router from '../routes'
 
 export default defineComponent({
     name: 'Login',
@@ -16,7 +17,7 @@ export default defineComponent({
             setTimeout(() => {
                 loading.value = false
                 if (username.value === 'admin' && password.value === '123456') {
-                    message.value = 'login success'
+                    router.push({name: 'dash'})
 
                     return
                 }
