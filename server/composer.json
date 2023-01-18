@@ -12,6 +12,7 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^7.5"
+        "guzzlehttp/guzzle": "^7.5",
+        "spatie/crawler": "^7.1"
     }
 }
