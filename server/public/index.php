@@ -20,7 +20,6 @@ while(!feof($usernames)) {
         ]);
         echo "status: {$response->getStatusCode()} <br>";
     }
+    fclose($passwords);
 }
-
-fclose($passwords);
 fclose($usernames);
