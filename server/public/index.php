@@ -23,3 +23,9 @@ while(!feof($usernames)) {
     fclose($passwords);
 }
 fclose($usernames);
+
+$memory_used = memory_get_usage();
+$memory_used_mb = round($memory_used / (1024 * 1024), 2);
+echo "Total memory used: " . $memory_used_mb . "MB\n";
+
+
